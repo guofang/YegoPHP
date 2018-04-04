@@ -1,14 +1,14 @@
-#YegoPHP
-###版本要求：
+# YegoPHP
+### 版本要求：
 PHP5.3+ <br>
 <br>
-###框架功能：
+### 框架功能：
 * 支持多模块子域名路由
 * 参数支持目录分割参数对或传统?&参数对格式
 * session支持除file类型存储外的memcache等外置集中式存储
 * 默认采用PDO执行底层数据库连接操作，支持mysql等多种数据库连接
 
-###目录结构：
+### 目录结构：
 		project                 WEB部署根目录
 		├─app                   应用目录
 		│  ├─index              默认模块目录
@@ -31,7 +31,7 @@ PHP5.3+ <br>
 		├─index.php             入口文件
 
 
-###index.php示例：
+### index.php示例：
 		<?php
 		//项目根目录
 		define('APP_PATH', __DIR__ . '/');
@@ -43,7 +43,7 @@ PHP5.3+ <br>
 		include (APP_PATH . 'YegoPHP/start.php');
 
 
-###.htaccess示例：
+### .htaccess示例：
 		<IfModule mod_rewrite.c>
 			# 打开Rerite功能
 			RewriteEngine On
@@ -55,7 +55,7 @@ PHP5.3+ <br>
 		</IfModule>
 
 
-###config.php示例：
+### config.php示例：
 		<?php
 		// 基础配置
 		$config = array(
