@@ -75,9 +75,11 @@ PHP5.3+ <br>
 		    'DB_HOST' => 'localhost',
 		    'DB_NAME' => 'yegophp',
 		    'DB_USER' => 'root',
-		    'DB_PSWD' => '123456',
+		    'DB_PSWD' => 'myroot',
 		    'DB_PORT' => '3306',
 		    'DB_PREF' => 'yego_',
+		    'DB_CHAR' => 'utf8',
+		    'DB_DSN'  => '',
 		);
 		
 		return $config;
