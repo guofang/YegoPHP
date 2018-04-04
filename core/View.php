@@ -1,5 +1,5 @@
 <?php
-namespace YegoPHP\base;
+namespace YegoPHP\core;
 /**
  * 视图基类
  */
@@ -34,7 +34,7 @@ class View
         // 公共页头文件
         if (is_file($controllerHeader)) {
             include ($controllerHeader);
-        } else {
+        } elseif (is_file($moduleHeader)) {
             include ($moduleHeader);
         }
 
@@ -48,7 +48,7 @@ class View
         // 公共页脚文件
         if (is_file($controllerFooter)) {
             include ($controllerFooter);
-        } else {
+        } elseif (is_file($moduleFooter)) {
             include ($moduleFooter);
         }
     }

@@ -1,5 +1,5 @@
 <?php
-namespace YegoPHP\base;
+namespace YegoPHP\core;
 /**
  * 控制器基类
  */
