@@ -180,15 +180,15 @@ class YegoPHP
     //配置数据库
     public function _setDb()
     {
-        if ($this->config['DB']) {
-            define('DB_HOST', $this->config['DB']['DB_HOST']);
-            define('DB_NAME', $this->config['DB']['DB_NAME']);
-            define('DB_USER', $this->config['DB']['DB_USER']);
-            define('DB_PSWD', $this->config['DB']['DB_PSWD']);
-            define('DB_PORT', $this->config['DB']['DB_PORT']);
-            define('DB_PREF', $this->config['DB']['DB_PREF']);
-            define('DB_CHAR', $this->config['DB']['DB_CHAR']);
-            if (empty($this->config['DB']['DB_DSN']))
+        if ($this->_config['DB']) {
+            define('DB_HOST', $this->_config['DB']['DB_HOST']);
+            define('DB_NAME', $this->_config['DB']['DB_NAME']);
+            define('DB_USER', $this->_config['DB']['DB_USER']);
+            define('DB_PSWD', $this->_config['DB']['DB_PSWD']);
+            define('DB_PORT', $this->_config['DB']['DB_PORT']);
+            define('DB_PREF', $this->_config['DB']['DB_PREF']);
+            define('DB_CHAR', $this->_config['DB']['DB_CHAR']);
+            if (empty($this->_config['DB']['DB_DSN']))
                 define('DB_DSN', sprintf('mysql:host=%s;dbname=%s', DB_HOST, DB_NAME)); //默认连接MySQL数据库
         }
     }
