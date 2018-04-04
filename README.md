@@ -4,7 +4,7 @@ PHP5.3+ <br>
 <br>
 ### 框架功能：
 * 支持多模块子域名路由
-* 参数支持目录分割参数对或传统?&参数对格式
+* 参数支持pathinfo格式参数或传统?&格式参数
 * session支持除file类型存储外的memcache等外置集中式存储
 * 默认采用PDO执行底层数据库连接操作，支持mysql等多种数据库连接
 
@@ -25,8 +25,8 @@ PHP5.3+ <br>
 		│      ├─views              视图目录
 		├─config                配置文件目录
 		├─YegoPHP               框架核心目录
-		│ ├─base                MVC基类目录
-		│ ├─YegoPHP.php         框架主文件
+		│  ├─base                MVC基类目录
+		│  ├─YegoPHP.php         框架主文件
 		├─static                静态文件目录
 		├─index.php             入口文件
 
