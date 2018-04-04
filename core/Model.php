@@ -15,7 +15,9 @@ class Model
     protected $_filter = ''; //过滤器
     public function __construct(){
         if (!$this->_table){
-            $this->_table = strtolower(substr(get_class($this), 0, -5)); //根据模型名推出表名，testModel->test
+            $cls_name = get_class($this);
+            $cls_name = basename(str_replace('\\', '/', $cls_name)); //去除可能存在的命名空间
+            $this->_table = strtolower(substr($cls_name, 0, -5)); //根据模型名推出表名，testModel->test
         }
     }
     /**
@@ -58,11 +60,10 @@ class Model
             );
         }
         //针对标准二维条件数组字符串化
-        
         if (!empty($where ['and']))
         {
-            $andWhereArr = $where ['and'];
-            foreach ($andWhereArr as $where_key => $where_val){
+            $andWhereArr = array();
+            foreach ($where ['and'] as $where_key => $where_val){
                 if (NULL === $where_val){
                     //无占位符，不替换
                     array_push($andWhereArr, $where_key);
@@ -74,8 +75,8 @@ class Model
         }
         if (!empty($where ['or']))
         {
-            $orWhereArr = $where ['or'];
-            foreach ($orWhereArr as $where_key => $where_val){
+            $orWhereArr = array();
+            foreach ($where ['or'] as $where_key => $where_val){
                 if (NULL === $where_val){
                     //无占位符，不替换
                     array_push($orWhereArr, $where_key);
@@ -135,16 +136,21 @@ class Model
         if (empty($data))
             return '';
         $insertFieldStr = ' (' . implode(',', array_keys($data)) . ') ';
-        $insertValStr = ' VALUES (' . implode(',', array_values($data)) . ') ';
+        $insertValStr = " VALUES ('" . implode("','", array_values($data)) . "') ";
         return $insertFieldStr . $insertValStr;
     }
+    /**
+     * 将单条数据数组转换为update字符串
+     * @param unknown $data
+     * @return string
+     */
     protected function _toUpdate($data){
         if (empty($data))
             return '';
         $updateStr = ' SET ';
         $updateStrSuffix = '';
         foreach ($data as $data_key => $data_val){
-            $updateStrSuffix .= $data_key . '=' . $data_val . ',';
+            $updateStrSuffix .= $data_key . "='" . $data_val . "',";
         }
         return $updateStr . trim($updateStrSuffix, ',');
     }
@@ -207,7 +213,9 @@ class Model
         $sql = sprintf("DELETE FROM `%s` ", $this->_table);
         $sql .= $this->_toWhere($where);
         $db = Pdo::getInstance()->prepare($sql);
-        return $db->exec($sql);
+        $db->execute();
+        
+        return $db->rowCount();
     }
     /**
      * 更新符合条件的记录
@@ -222,8 +230,10 @@ class Model
         $sql = sprintf("UPDATE `%s`", $this->_table);
         $sql .= $this->_toUpdate($data);
         $sql .= $this->_toWhere($where);
-        $db = Pdo::getInstance()->prepare($sql);
-        return $db->exec($sql);
+        $db = Pdo::getInstance()->prepare($sql);echo $sql;
+        $db->execute();
+        
+        return $db->rowCount();
     }
     /**
      * 通用执行自由sql
