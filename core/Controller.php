@@ -1,5 +1,7 @@
 <?php
 namespace YegoPHP\core;
+
+use YegoPHP\core\View;
 /**
  * 控制器基类
  */
