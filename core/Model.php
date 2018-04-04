@@ -161,7 +161,6 @@ class Model
         $sql .= $this->_toWhere($where);
         $sql .= $this->_toOrder($order);
         $sql .= $this->_toLimit($count, $offset);
-        $sql = mysql_real_escape_string($sql); //该函数对于标准sql语句防注入通用
         $db = Pdo::getInstance()->prepare($sql);
         $db->execute();
         
@@ -177,7 +176,6 @@ class Model
         $sql = sprintf("SELECT * FROM `%s` ", $this->_table);
         $sql .= $this->_toWhere($where);
         $sql .= $this->_toOrder($order);
-        $sql = mysql_real_escape_string($sql);
         $db = Pdo::getInstance()->prepare($sql);
         $db->execute();
         
@@ -193,7 +191,6 @@ class Model
             return FALSE;
         $sql = sprintf("INSERT INTO `%s` ", $this->_table);
         $sql .= $this->_toInsert($data);
-        $sql = mysql_real_escape_string($sql);
         $db = Pdo::getInstance()->prepare($sql);
         $db->execute();
         
@@ -209,8 +206,8 @@ class Model
             return FALSE;
         $sql = sprintf("DELETE FROM `%s` ", $this->_table);
         $sql .= $this->_toWhere($where);
-        $sql = mysql_real_escape_string($sql);
-        return Pdo::getInstance()->exec($sql);
+        $db = Pdo::getInstance()->prepare($sql);
+        return $db->exec($sql);
     }
     /**
      * 更新符合条件的记录
@@ -225,8 +222,8 @@ class Model
         $sql = sprintf("UPDATE `%s`", $this->_table);
         $sql .= $this->_toUpdate($data);
         $sql .= $this->_toWhere($where);
-        $sql = mysql_real_escape_string($sql);
-        return Pdo::getInstance()->exec($sql);
+        $db = Pdo::getInstance()->prepare($sql);
+        return $db->exec($sql);
     }
     /**
      * 通用执行自由sql
@@ -234,8 +231,8 @@ class Model
      * @return 返回PDOStatement对象，查询语句结果可遍历读取，增删改语句可rowCount()获取受影响行数
      */
     public function execsql($sql){
-        $sql = mysql_real_escape_string($sql);
-        return Pdo::getInstance()->query($sql);
+        $db = Pdo::getInstance()->prepare($sql);
+        return $db->query($sql);
     }
     /**
      * 获取最后一条插入记录自增键ID
