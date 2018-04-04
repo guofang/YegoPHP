@@ -210,7 +210,7 @@ class YegoPHP
             exit($this->_action . '动作不存在');
         }
         //路由分发
-        $dispatch = new $controllerCls($this->_module, $this->_controller, $this->_action);
-        call_user_func_array(array($dispatch, $this->_action), $this->_param);
+        $dispatch = new $controllerCls($this->_module, $this->_controller, $this->_action, $this->_param);
+        call_user_func_array(array($dispatch, $this->_action), array());
     }
 }
