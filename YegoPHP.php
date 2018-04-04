@@ -185,9 +185,9 @@ class YegoPHP
             define('DB_NAME', $this->_config['DB']['DB_NAME']);
             define('DB_USER', $this->_config['DB']['DB_USER']);
             define('DB_PSWD', $this->_config['DB']['DB_PSWD']);
-            define('DB_PORT', $this->_config['DB']['DB_PORT']);
-            define('DB_PREF', $this->_config['DB']['DB_PREF']);
-            define('DB_CHAR', $this->_config['DB']['DB_CHAR']);
+            isset($this->_config['DB']['DB_PORT']) ? define('DB_PORT', $this->_config['DB']['DB_PORT']) : define('DB_PORT', '3306');
+            isset($this->_config['DB']['DB_PREF']) ? define('DB_PREF', $this->_config['DB']['DB_PREF']) : define('DB_PREF', '');
+            isset($this->_config['DB']['DB_CHAR']) ? define('DB_CHAR', $this->_config['DB']['DB_CHAR']) : define('DB_CHAR', 'utf8');
             if (empty($this->_config['DB']['DB_DSN']))
                 define('DB_DSN', sprintf('mysql:host=%s;dbname=%s', DB_HOST, DB_NAME)); //默认连接MySQL数据库
         }

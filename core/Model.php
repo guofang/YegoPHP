@@ -19,6 +19,7 @@ class Model
             $cls_name = basename(str_replace('\\', '/', $cls_name)); //去除可能存在的命名空间
             $this->_table = strtolower(substr($cls_name, 0, -5)); //根据模型名推出表名，testModel->test
         }
+        $this->_table = DB_PREF . $this->_table;
     }
     /**
      * $where条件数组或条件字符串转换为标准查询条件字符串
