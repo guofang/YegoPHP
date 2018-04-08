@@ -26,7 +26,7 @@ PHP5.3+ <br>
 		├─config                配置文件目录
 		├─YegoPHP               框架核心目录
 		│  ├─core                MVC核心类库
-		│  ├─driver				框架驱动类库
+		│  ├─drivers				框架驱动类库
 		│  ├─YegoPHP.php         框架主文件
 		│  ├─start.php         	框架启动文件
 		├─static                静态文件目录
