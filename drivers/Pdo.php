@@ -1,5 +1,5 @@
 <?php
-namespace YegoPHP\driver;
+namespace YegoPHP\drivers;
 
 /**
  * 数据库驱动类

@@ -1,7 +1,7 @@
 <?php
 namespace YegoPHP\core;
 
-use YegoPHP\driver\Pdo;
+use YegoPHP\drivers\Pdo;
 
 /**
  * 模型基类
