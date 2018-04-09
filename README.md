@@ -120,13 +120,13 @@ PHP5.3+ <br>
 		
 ### 视图公共头部和底部文件header.php和footer.php：
 		支持模块内共用头部底部文件和控制器多个视图共用头部底部文件，如下：
-			├─app                   应用目录
-			│  ├─index              默认模块目录
-			│      ├─header.php         模块公共头部文件
-			│      ├─footer.php         模块公共底部文件
-			│      ├─controllers        控制器目录
-			│      ├─models             模块目录
-			│      ├─views              视图目录
-			│             ├─controdir       
-			│                    ├─header.php   控制器公共头部文件
-			│                    ├─footer.php   控制器公共底部文件
+		├─app                   应用目录
+		│  ├─index              默认模块目录
+		│      ├─header.php         模块公共头部文件
+		│      ├─footer.php         模块公共底部文件
+		│      ├─controllers        控制器目录
+		│      ├─models             模块目录
+		│      ├─views              视图目录
+		│            ├─controdir       
+		│                   ├─header.php   控制器公共头部文件
+		│                   ├─footer.php   控制器公共底部文件
