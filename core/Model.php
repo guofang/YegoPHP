@@ -10,9 +10,8 @@ use YegoPHP\drivers\Pdo;
  */
 class Model
 {
-    protected $_table; //表名
-    protected $_primary_key = 'id'; //主键
-    protected $_filter = ''; //过滤器
+    private $_table; //表名
+    
     public function __construct(){
         if (!$this->_table){
             $cls_name = get_class($this);
@@ -46,7 +45,7 @@ class Model
 	 * $where = 'picture_id = 1'
      * @return string
      */
-    protected function _toWhere($where){
+    private function _toWhere($where){
         if (empty($where))
             return '';
         $whereStr = ' WHERE ';
@@ -98,7 +97,7 @@ class Model
      * @param unknown $order
      * @return string
      */
-    protected function _toOrder($order){
+    private function _toOrder($order){
         if(empty($order))
             return '';
         $orderStr = ' ORDER BY ';
@@ -118,7 +117,7 @@ class Model
      * @param unknown $offset
      * @return string|Ambigous <string, number>
      */
-    protected function _toLimit($count, $offset){
+    private function _toLimit($count, $offset){
         if (is_null($count))
             return '';
         $limitStr = ' LIMIT ';
@@ -133,7 +132,7 @@ class Model
      * @param unknown $data
      * @return string
      */
-    protected function _toInsert($data){
+    private function _toInsert($data){
         if (empty($data))
             return '';
         $insertFieldStr = ' (' . implode(',', array_keys($data)) . ') ';
@@ -145,7 +144,7 @@ class Model
      * @param unknown $data
      * @return string
      */
-    protected function _toUpdate($data){
+    private function _toUpdate($data){
         if (empty($data))
             return '';
         $updateStr = ' SET ';
