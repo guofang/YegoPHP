@@ -86,4 +86,47 @@ PHP5.3+ <br>
 		
 		return $config;
 
-
+### 示例IndexController.php控制器类：
+		<?php
+		namespace app\index\controllers;
+		
+		use YegoPHP\core\Controller;
+		
+		class IndexController extends Controller
+		{
+		    public function index()
+		    {
+		//         $params = $this->_getParams();
+		//         var_dump($params);
+		//         echo $this->_getParam('e', '3');
+		        $db_test = new \app\index\models\testModel();
+		        $res = $db_test->fetchAll("*", null, array('id'=>'asc'), 3, 0);
+		//         $res = $db_test->insert(array('name'=>'haha1', 'content'=>'哈哈哈2222'));
+		//         $res = $db_test->update(array('name'=>'haha1', 'content'=>'哈哈哈2222'), array('id = ?'=>1));
+		//         $res = $db_test->delete(array('id in (3,4)'=>null));
+		        var_dump($res);
+		//         $this->render();
+		    }
+		}
+		
+### 示例空模型类TestModel.php：
+		<?php
+		namespace app\index\models;
+		
+		class TestModel extends \YegoPHP\core\Model
+		{
+		    
+		}
+		
+### 视图公共头部和底部文件header.php和footer.php：
+		支持模块内共用头部底部文件和控制器多个视图共用头部底部文件，如下：
+			├─app                   应用目录
+			│  ├─index              默认模块目录
+			│      ├─header.php         模块公共头部文件
+			│      ├─footer.php         模块公共底部文件
+			│      ├─controllers        控制器目录
+			│      ├─models             模块目录
+			│      ├─views              视图目录
+			│             ├─controdir       
+			│                    ├─header.php   控制器公共头部文件
+			│                    ├─footer.php   控制器公共底部文件
