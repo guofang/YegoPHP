@@ -129,5 +129,5 @@ PHP5.3+ <br>
 		│            ├─controdir       
 		│                   ├─header.php   控制器公共头部文件
 		│                   ├─footer.php   控制器公共底部文件
-		│      ├─header.php         模块公共头部文件
-		│      ├─footer.php         模块公共底部文件
+		│            ├─header.php         模块公共头部文件
+		│            ├─footer.php         模块公共底部文件
