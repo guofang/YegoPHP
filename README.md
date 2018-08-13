@@ -28,6 +28,7 @@ PHP5.3+ <br>
 		├─YegoPHP               框架核心目录
 		│  ├─core                MVC核心类库
 		│  ├─drivers		 框架驱动类库
+		│  ├─libs		 框架扩展类库
 		│  ├─YegoPHP.php         框架主文件
 		│  ├─start.php         	框架启动文件
 		├─static                静态文件目录
