@@ -21,7 +21,7 @@ class View
         $this->variables[$name] = $value;
     }
     // 渲染展示
-    public function render()
+    public function render($page='')
     {
         extract($this->variables);
         $moduleHeader = APP_PATH . 'app/' . $this->_module . '/views/header.php';
@@ -29,7 +29,13 @@ class View
 
         $controllerHeader = APP_PATH . 'app/' . $this->_module . '/views/' . $this->_controller . '/header.php';
         $controllerFooter = APP_PATH . 'app/' . $this->_module . '/views/' . $this->_controller . '/footer.php';
-        $controllerLayout = APP_PATH . 'app/' . $this->_module . '/views/' . $this->_controller . '/' . $this->_action . '.php';
+        if (empty($page)) {
+            $controllerLayout = APP_PATH . 'app/' . $this->_module . '/views/' . $this->_controller . '/' . $this->_action . '.php';
+        }else
+        {
+            $controllerLayout = APP_PATH . 'app/' . $this->_module . '/views/' . $this->_controller . '/' . $page . '.php';
+        }
+        
 
         // 公共页头文件
         if (is_file($controllerHeader)) {

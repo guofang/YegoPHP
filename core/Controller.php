@@ -28,9 +28,9 @@ class Controller
     }
     
     // 渲染视图
-    public function render()
+    public function render($page='')
     {
-        $this->_view->render();
+        $this->_view->render($page);
     }
     /**
      * 请求参数初始化
